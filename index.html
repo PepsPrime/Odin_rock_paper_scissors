@@ -7,18 +7,65 @@
 </head>
 <body>
     <script>
+        let humanScore = 0
+        let computerScore = 0
         function getComputerChoice(){
-            let ComputerChoice = Math.random()
+            let computerChoice = Math.random()
 
-            if (ComputerChoice <= (1/3)) {
-                return "Rock"
-            } else if (ComputerChoice <= 2/3){
-                return "Paper"
+            if (computerChoice <= (1/3)) {
+                return "ROCK"
+            } else if (computerChoice <= 2/3){
+                return "PAPER"
             } else {
-                return "Scissors"
+                return "SCISSORS"
             }
         }
-        console.log(getComputerChoice())
+
+        function getHumanChoice() {
+            let humanChoice = prompt("Choose between : Rock, Paper and Scissors", defaultValue = "Rock")
+            return humanChoice
+        }
+
+        function playRound(humanChoice,computerChoice) {
+
+            humanChoice = humanChoice.toUpperCase()
+            console.log("Choix de l'ordinateur" + computerChoice)
+            console.log("Votre choix :" + humanChoice)
+            switch (humanChoice) {
+                case "ROCK":
+                    if (computerChoice == "PAPER") {
+                        console.log("You loose !")
+                    } else if (computerChoice == "SCISSORS"){
+                        console.log("You won !")
+                    } else {
+                        console.log("Ex aequo")
+                    }
+                    break
+                case "PAPER":
+                if (computerChoice == "PAPER") {
+                        console.log("Ex aequo!")
+                    } else if (computerChoice == "SCISSORS"){
+                        console.log("You loose !")
+                    } else {
+                        console.log("You won !")
+                    }
+                    break
+                case "SCISSORS":
+                if (computerChoice == "PAPER") {
+                        console.log("You won!")
+                    } else if (computerChoice == "SCISSORS"){
+                        console.log("Ex aequo!")
+                    } else {
+                        console.log("You loose !")
+                    }
+                    break
+                default:
+                    console.log("Choix inconnu")
+            }
+        }
+
+        
+        playRound(getHumanChoice(),getComputerChoice())
     </script>
 </body>
 </html>
